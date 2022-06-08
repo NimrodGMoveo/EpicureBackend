@@ -3,14 +3,10 @@ const chefsController = require("../Controllers/chefsController");
 
 module.exports = { chefsRouter };
 
-chefsRouter.get("/", (req, res) => chefsController.requestChefsList(req, res));
+chefsRouter.get("/", chefsController.requestChefsList);
 
-chefsRouter.post("/", (req, res) => chefsController.requestAddChef(req, res));
+chefsRouter.post("/", chefsController.requestAddChef);
 
-chefsRouter.patch("/:id", (req, res) =>
-  chefsController.requestUpdateChef(req, res)
-);
+chefsRouter.patch("/:id", chefsController.requestUpdateChef);
 
-chefsRouter.delete("/:id", (req, res) =>
-  chefsController.requestDeleteChef(req, res)
-);
+chefsRouter.delete("/:id",chefsController.requestDeleteChef);

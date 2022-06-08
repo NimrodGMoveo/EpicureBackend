@@ -13,7 +13,7 @@ mongoose.connect(
     useNewUrlParser: true,
     useUnifiedTopology: true,
   },
-  () => console.log("Connect")
+  () => console.log("Connected")
 );
 
 app.use(express.json());

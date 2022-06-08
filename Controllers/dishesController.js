@@ -17,10 +17,7 @@ const requestDishesList = async (req, res) => {
 
 const requestAddDish = async (req, res) => {
   try {
-    dish = {
-      ...req.body,
-    };
-    const result = await handler.postDish(dish);
+    const result = await handler.postDish(req.body);
     res.status(200).json({
       status: "Success",
       data: result,

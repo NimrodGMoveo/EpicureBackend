@@ -3,18 +3,12 @@ const restaurantsController = require("../Controllers/restaurantsController");
 
 module.exports = { restaurantsRouter };
 
-restaurantsRouter.get("/", (req, res) =>
-  restaurantsController.requestRestaurantsList(req, res)
-);
+restaurantsRouter.get("/", restaurantsController.requestRestaurantsList);
 
-restaurantsRouter.post("/", (req, res) =>
-  restaurantsController.requestAddRestaurant(req, res)
-);
+restaurantsRouter.get("/dishes2", restaurantsController.requestRestaurantDishes);
 
-restaurantsRouter.patch("/:id", (req, res) =>
-  restaurantsController.requestUpdateRestaurant(req, res)
-);
+restaurantsRouter.post("/", restaurantsController.requestAddRestaurant);
 
-restaurantsRouter.delete("/:id", (req, res) =>
-  restaurantsController.requestDeleteRestaurant(req, res)
-);
+restaurantsRouter.patch("/:id", restaurantsController.requestUpdateRestaurant);
+
+restaurantsRouter.delete("/:id", restaurantsController.requestDeleteRestaurant);

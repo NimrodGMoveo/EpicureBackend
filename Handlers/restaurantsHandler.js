@@ -4,6 +4,12 @@ const getRestaurantList = () => {
   return model.find().populate("chef");
 };
 
+const getRestuarantDishes = (data) => {
+  return model.aggregate([
+    {$lookup: "chef"}
+  ])
+}
+
 const postRestaurant = (data) => {
   return model.create(data);
 };
@@ -21,4 +27,5 @@ module.exports = {
   getRestaurantList,
   updateRestaurant,
   deleteRestaurant,
+  getRestuarantDishes,
 };

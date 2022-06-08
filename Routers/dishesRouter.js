@@ -3,16 +3,10 @@ const dishesController = require("../Controllers/dishesController");
 
 module.exports = { dishesRouter };
 
-dishesRouter.get("/", (req, res) =>
-  dishesController.requestDishesList(req, res)
-);
+dishesRouter.get("/", dishesController.requestDishesList);
 
-dishesRouter.post("/", (req, res) => dishesController.requestAddDish(req, res));
+dishesRouter.post("/", dishesController.requestAddDish);
 
-dishesRouter.patch("/:id", (req, res) =>
-  dishesController.requestUpdateDish(req, res)
-);
+dishesRouter.patch("/:id", dishesController.requestUpdateDish);
 
-dishesRouter.delete("/:id", (req, res) =>
-  dishesController.requestDeleteDish(req, res)
-);
+dishesRouter.delete("/:id", dishesController.requestDeleteDish);
