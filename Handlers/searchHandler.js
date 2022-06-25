@@ -11,7 +11,13 @@ const getSearchResult = (input) => {
   models.push(restaurants);
   models.push(dishes);
   models.push(chefs);
-  return Promise.all(models.map((model) => model.find({ $model: input })));
+  return Promise.all(
+    models
+      .map((model) => model.find({ $model: input }))
+      .map((y) => {
+        return { key: 1 };
+      })
+  );
 };
 
 module.exports = { getSearchResult };

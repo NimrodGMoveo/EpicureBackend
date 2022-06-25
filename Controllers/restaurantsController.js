@@ -1,4 +1,5 @@
 const handler = require("../Handlers/restaurantsHandler");
+const dishHandler = require("../Handlers/dishesHandler");
 
 const requestRestaurantsList = async (req, res) => {
   try {
@@ -30,6 +31,8 @@ const requestAddRestaurant = async (req, res) => {
   }
 };
 
+
+// I need aggregation of lookup 
 const requestRestaurantDishes = async (req, res) => {
   try{
     const result = await handler.getRestuarantDishes(req.body);
@@ -62,6 +65,7 @@ const requestUpdateRestaurant = async (req, res) => {
 
 const requestDeleteRestaurant = async (req, res) => {
   try {
+    const dishesRestaurant = await dishHandler.deleteManyById(req.params.id);
     const restaurant = await handler.deleteRestaurant(req.params.id);
     res.status(200).json({
       status: "Success",
@@ -75,6 +79,7 @@ const requestDeleteRestaurant = async (req, res) => {
     });
   }
 };
+
 
 module.exports = {
   requestRestaurantsList,

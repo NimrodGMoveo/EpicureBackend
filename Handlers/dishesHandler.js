@@ -1,7 +1,22 @@
 const model = require("../Schemes/dishesScheme").DishesModel;
 
 const getDishesList = () => {
-  return model.find().populate("restaurant");
+  return model.aggregate([
+    {
+      $match: {
+        active: true,
+      },
+    },
+    {
+      $lookup: {
+        from: "restaurants",
+        localField: "restaurant",
+        foreignField: "_id",
+        as: "restaurant",
+      },
+    },
+    { $unwind: "$restaurant" },
+  ]);
 };
 
 const postDish = (data) => {
@@ -13,7 +28,21 @@ const updateDish = (newData, dishID) => {
 };
 
 const deleteDish = (dishID) => {
-  return model.deleteOne({ _id: dishID });
+  return model.updateOne({ _id: dishID }, { $set: { active: false } });
 };
 
-module.exports = { getDishesList, postDish, updateDish, deleteDish };
+const deleteManyById = async (restRef) => {
+  const deletedDishes = await model.updateMany(
+    { restaurant: restRef },
+    { $set: { active: false } }
+  );
+  return deletedDishes;
+};
+
+module.exports = {
+  getDishesList,
+  postDish,
+  updateDish,
+  deleteDish,
+  deleteManyById,
+};

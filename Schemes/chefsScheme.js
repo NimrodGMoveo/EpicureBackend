@@ -8,6 +8,7 @@ const ChefsSchema = new mongoose.Schema({
     required: true,
   },
   description: { type: String, min: [1, "Chef Description can't be empty"],required: true, },
+  active: {type: Boolean, required: true}
 });
 
 const ChefsModel = mongoose.model("Chefs", ChefsSchema);

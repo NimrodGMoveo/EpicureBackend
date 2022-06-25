@@ -1,19 +1,33 @@
+const dishHandler = require('../Handlers/dishesHandler')
+const restaurantHandler = require('../Handlers/restaurantsHandler')
 const model = require("../Schemes/chefsScheme").ChefsModel;
+const restaurantModel = require("../Schemes/restaurantsScheme").RestaurantModel;
 
 const getChefsList = () => {
-  return model.find();
+  return model.aggregate([
+    {
+        '$match': {
+            'active': true
+        }
+    }
+]);
 };
 
 const postChef = (data) => {
   return model.create(data);
 };
 
-const updateChef = (newData, chefID) => {
-  return model.findByIdAndUpdate(chefID, newData);
+const updateChef = (chefID,newData) => {
+  return model.findByIdAndUpdate(chefID,newData);
 };
 
 const deleteChef = (chefID) => {
-  return model.deleteOne({ _id: chefID });
+  return model.updateOne({ _id: chefID }, {$set: {active: false}});
 };
 
-module.exports = { getChefsList, postChef, deleteChef, updateChef };
+const checkTempChef = (chefID) => {
+  let a = restaurantModel.find({"chef": ObjectId(chefID)})
+  return a
+}
+
+module.exports = { getChefsList, postChef, deleteChef, updateChef, checkTempChef };

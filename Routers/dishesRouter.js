@@ -1,12 +1,13 @@
 const dishesRouter = require("express").Router();
 const dishesController = require("../Controllers/dishesController");
+const verifyUser = require("../Validations/verifyToken").verifyUser;
 
 module.exports = { dishesRouter };
 
 dishesRouter.get("/", dishesController.requestDishesList);
 
-dishesRouter.post("/", dishesController.requestAddDish);
+dishesRouter.post("/", verifyUser, dishesController.requestAddDish);
 
-dishesRouter.patch("/:id", dishesController.requestUpdateDish);
+dishesRouter.patch("/:id", verifyUser, dishesController.requestUpdateDish);
 
-dishesRouter.delete("/:id", dishesController.requestDeleteDish);
+dishesRouter.patch("delete/:id", verifyUser,  dishesController.requestDeleteDish);

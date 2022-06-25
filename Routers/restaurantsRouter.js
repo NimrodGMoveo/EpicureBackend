@@ -1,14 +1,27 @@
 const restaurantsRouter = require("express").Router();
 const restaurantsController = require("../Controllers/restaurantsController");
+const verifyUser = require("../Validations/verifyToken").verifyUser;
 
 module.exports = { restaurantsRouter };
 
 restaurantsRouter.get("/", restaurantsController.requestRestaurantsList);
 
-restaurantsRouter.get("/dishes2", restaurantsController.requestRestaurantDishes);
+restaurantsRouter.get("/dishes", restaurantsController.requestRestaurantDishes);
 
-restaurantsRouter.post("/", restaurantsController.requestAddRestaurant);
+restaurantsRouter.post(
+  "/",
+  verifyUser,
+  restaurantsController.requestAddRestaurant
+);
 
-restaurantsRouter.patch("/:id", restaurantsController.requestUpdateRestaurant);
+restaurantsRouter.patch(
+  "/:id",
+  verifyUser,
+  restaurantsController.requestUpdateRestaurant
+);
 
-restaurantsRouter.delete("/:id", restaurantsController.requestDeleteRestaurant);
+restaurantsRouter.patch(
+  "/delete/:id",
+  verifyUser,
+  restaurantsController.requestDeleteRestaurant
+);

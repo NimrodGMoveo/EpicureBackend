@@ -1,12 +1,13 @@
 const chefsRouter = require("express").Router();
 const chefsController = require("../Controllers/chefsController");
+const verifyUser = require("../Validations/verifyToken").verifyUser;
 
 module.exports = { chefsRouter };
 
 chefsRouter.get("/", chefsController.requestChefsList);
 
-chefsRouter.post("/", chefsController.requestAddChef);
+chefsRouter.post("/", verifyUser, chefsController.requestAddChef);
 
-chefsRouter.patch("/:id", chefsController.requestUpdateChef);
+chefsRouter.patch("/:id", verifyUser, chefsController.requestUpdateChef);
 
-chefsRouter.delete("/:id",chefsController.requestDeleteChef);
+chefsRouter.patch("/delete/:id", verifyUser, chefsController.requestDeleteChef);
