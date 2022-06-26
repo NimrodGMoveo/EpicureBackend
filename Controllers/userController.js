@@ -43,7 +43,10 @@ const requestLogInUser = async (req, res) => {
   const { err } = userValidation(req.body);
   if (err) return res.status(400).send(err.details[0].message);
   const givenUsername = req.body.username;
-  const user = await userModel.findOne({username: givenUsername, admin: true});
+  const user = await userModel.findOne({
+    username: givenUsername,
+    admin: true,
+  });
 
   if (!user)
     return res.status(400).send("Username or Password does not exists");
@@ -55,7 +58,9 @@ const requestLogInUser = async (req, res) => {
   if (!validPass) return res.status(400).send("Invalid Password");
 
   //create and asign token
-  const token = jwt.sign({ _id: user._id }, process.env.TOKEN_SECRET);
+  const token = jwt.sign({ _id: user._id }, process.env.TOKEN_SECRET, {
+    expiresIn: "1d",
+  });
   res.header("auth-token", token).send(token);
 };
 
