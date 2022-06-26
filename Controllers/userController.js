@@ -40,14 +40,11 @@ const requestPostUser = async (req, res) => {
 
 //This is a function when a user request to login
 const requestLogInUser = async (req, res) => {
-  
-  
   const { err } = userValidation(req.body);
   if (err) return res.status(400).send(err.details[0].message);
+  const givenUsername = req.body.username;
+  const user = await userModel.findOne({username: givenUsername, admin: true});
 
-  const user = await userModel.findOne({
-    username: req.body.username,
-  });
   if (!user)
     return res.status(400).send("Username or Password does not exists");
 
