@@ -5,7 +5,6 @@
 			"name": "EpicureBackend",
 			"script": ".src/server.js",
 			"env": {
-				"NODE_ENV": "origin/main",
 				"URL":"mongodb+srv://nimrodtestdb:testpass123@cluster0.i8c3b.mongodb.net/EpicureDB",
 				"PORT":"8000",
 				"TOKEN_SECRET":"THISISMYSECRET"
@@ -14,7 +13,7 @@
 	],
 
 	"deploy": {
-		"staging": {
+		"origin/main": {
 
 			"key": "~/Downloads/EpicureNimrod.pem",
 
@@ -34,7 +33,6 @@
 
 			"pre-deploy-local": "echo 'Deploying code to servers'",
 			"env": {
-				"NODE_ENV":"origin/main",
 				"URL":"mongodb+srv://nimrodtestdb:testpass123@cluster0.i8c3b.mongodb.net/EpicureDB",
 				"PORT":"8000",
 				"TOKEN_SECRET":"THISISMYSECRET"
