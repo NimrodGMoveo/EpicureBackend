@@ -1,0 +1,46 @@
+{
+
+
+	// Applications part
+	"apps": [
+		{
+			"name": "EpicureBackend",
+			"script": ".src/server.js",
+			"env": {
+				"URL":"mongodb+srv://nimrodtestdb:testpass123@cluster0.i8c3b.mongodb.net/EpicureDB",
+				"PORT":"8000",
+				"TOKEN_SECRET":"THISISMYSECRET"
+			}
+		}
+	],
+
+	"deploy": {
+		"staging": {
+
+			"key": "~/Downloads/EpicureNimrod.pem",
+
+			"user": "ubuntu",
+
+			"host": ["ec2-3-90-6-123.compute-1.amazonaws.com"],
+
+			"ref": "origin/main",
+
+			"repo": "git@github.com:NimrodGMoveo/EpicureBackend.git",
+
+			"path": "/home/ubuntu/Epicure-server",
+
+			"ssh_options": "StrictHostKeyChecking=no",
+
+			"post-deploy": "mkdir -p logs && npm i && pm2 reload ecosystem.json --env staging",
+
+			"pre-deploy-local": "echo 'Deploying code to servers'",
+			"env": {
+				"URL":"mongodb+srv://nimrodtestdb:testpass123@cluster0.i8c3b.mongodb.net/EpicureDB",
+				"PORT":"8000",
+				"TOKEN_SECRET":"THISISMYSECRET"
+
+			}
+		}
+	}
+}
+
