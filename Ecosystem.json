@@ -19,7 +19,7 @@
 
 			"user": "ubuntu",
 
-			"host": ["ec2-3-90-6-123.compute-1.amazonaws.com"],
+			"host": ["ec2-100-27-26-247.compute-1.amazonaws.com"],
 
 			"ref": "origin/main",
 
