@@ -1,7 +1,5 @@
 {
 
-
-	// Applications part
 	"apps": [
 		{
 			"name": "EpicureBackend",
