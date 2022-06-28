@@ -29,7 +29,7 @@
 
 			"ssh_options": "StrictHostKeyChecking=no",
 
-			"post-deploy": "mkdir -p logs && npm i && npm run build && pm2 start ~/Epicure-server/current/dist/index.js && pm2 reload ecosystem.json --env staging",
+			"post-deploy": "mkdir -p logs && npm i && npm run build && pm2 reload ecosystem.json --env staging",
 
 			"pre-deploy-local": "echo 'Deploying code to servers'",
 			"env": {

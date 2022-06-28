@@ -1,5 +1,8 @@
 const express = require("express");
-const dotenv = require("dotenv").config();
+const path = require("path");
+const dotenv = require("dotenv").config({
+  path: path.resolve(__dirname, "./.env"),
+});
 const mongoose = require("mongoose");
 const cors = require("cors");
 const mainRouter = require("../Routers/mainRouter").mainRouter;
@@ -30,4 +33,4 @@ app.use("/api", cors(corsOptions), mainRouter);
 app.listen(port, () => {
   return console.log(`Express is listening at http://localhost:${port}`);
 });
-//Create USE effect withing every backend request 
+//Create USE effect withing every backend request
