@@ -5,7 +5,7 @@
 			"name": "EpicureBackend",
 			"script": ".src/server.js",
 			"env": {
-				"URL":"mongodb+srv://nimrodtestdb:testpass123@cluster0.i8c3b.mongodb.net/EpicureDB",
+				"MONGODB_URI":"mongodb+srv://nimrodtestdb:testpass123@cluster0.i8c3b.mongodb.net/EpicureDB",
 				"PORT":"8000",
 				"TOKEN_SECRET":"THISISMYSECRET"
 			}
@@ -33,7 +33,7 @@
 
 			"pre-deploy-local": "echo 'Deploying code to servers'",
 			"env": {
-				"URL":"mongodb+srv://nimrodtestdb:testpass123@cluster0.i8c3b.mongodb.net/EpicureDB",
+				"MONGODB_URI":"mongodb+srv://nimrodtestdb:testpass123@cluster0.i8c3b.mongodb.net/EpicureDB",
 				"PORT":"8000",
 				"TOKEN_SECRET":"THISISMYSECRET"
 

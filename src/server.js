@@ -9,7 +9,7 @@ const mainRouter = require("../Routers/mainRouter").mainRouter;
 
 const port = process.env.PORT;
 const app = express();
-const url = process.env.URL;
+const url = process.env.MONGODB_URI;
 
 mongoose.connect(
   url,
