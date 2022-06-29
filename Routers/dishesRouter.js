@@ -10,4 +10,8 @@ dishesRouter.post("/", verifyUser, dishesController.requestAddDish);
 
 dishesRouter.patch("/:id", verifyUser, dishesController.requestUpdateDish);
 
-dishesRouter.patch("delete/:id", verifyUser,  dishesController.requestDeleteDish);
+dishesRouter.patch(
+  "/delete/:id",
+  verifyUser,
+  dishesController.requestDeleteDish
+);

@@ -45,6 +45,7 @@ const requestUpdateDish = async (req, res) => {
 };
 
 const requestDeleteDish = async (req, res) => {
+  console.log("I am trying to delete VIA Backend");
   try {
     const dish = await handler.deleteDish(req.params.id);
     res.status(200).json({
