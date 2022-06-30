@@ -2,6 +2,7 @@ const { stringify } = require("querystring");
 const dishesHandler = require("../Handlers/dishesHandler");
 
 const restaurantModel = require("../Schemes/restaurantsScheme").RestaurantModel;
+const dishesModel = require("../Schemes/dishesScheme").DishesModel;
 
 const getRestaurantList = () => {
   return restaurantModel.aggregate([
@@ -48,9 +49,9 @@ const getRestuarantDishes = (data) => {
   ]);
 };
 
-const getChefRestaurants = (data) => {
-  return "PLACEHOLDER";
-};
+const getRestuarantDishes2 = (restaurantID) => {
+  return dishesModel.find({restaurant: restaurantID})
+}
 
 const postRestaurant = (data) => {
   return restaurantModel.create(data);
@@ -93,4 +94,5 @@ module.exports = {
   getRestuarantDishes,
   deleteManyById,
   deleteManyMany,
+  getRestuarantDishes2
 };

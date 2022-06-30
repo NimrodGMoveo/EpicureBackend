@@ -8,6 +8,11 @@ restaurantsRouter.get("/", restaurantsController.requestRestaurantsList);
 
 restaurantsRouter.get("/dishes", restaurantsController.requestRestaurantDishes);
 
+restaurantsRouter.get(
+  "/dishes2/:id",verifyUser,
+  restaurantsController.requestRestaurantsDishes2
+);
+
 restaurantsRouter.post(
   "/",
   verifyUser,

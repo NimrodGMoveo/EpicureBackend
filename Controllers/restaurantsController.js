@@ -15,6 +15,20 @@ const requestRestaurantsList = async (req, res) => {
     });
   }
 };
+const requestRestaurantsDishes2 = async (req, res) => {
+  try {
+    const result = await handler.getRestuarantDishes2(req.params.id);
+    res.status(200).json({
+      status: "Success",
+      data: result,
+    });
+  } catch (error) {
+    res.status(400).json({
+      status: "Failure",
+      message: error,
+    });
+  }
+};
 
 const requestAddRestaurant = async (req, res) => {
   try {
@@ -87,4 +101,5 @@ module.exports = {
   requestUpdateRestaurant,
   requestDeleteRestaurant,
   requestRestaurantDishes,
+  requestRestaurantsDishes2
 };

@@ -14,11 +14,15 @@ const RestaurantSchema = new mongoose.Schema({
     max: [5, "Maximum number of stars is 5"],
   },
   chef: { type: mongoose.Schema.Types.ObjectId, ref: "Chefs", required: true },
-  openingHours: {type: [String], required: true},
-  openDate: { type: Date, required: true },
-  popular: { type: Boolean, required: true},
-  signatureDish: { type: mongoose.Schema.Types.ObjectId, ref: "Dishes" },
-  active: {type: Boolean, required: true},
+  openingHours: { type: [String], required: true },
+  new: { type: Boolean, required: true },
+  popular: { type: Boolean, required: true },
+  signatureDish: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "Dishes",
+    required: true,
+  },
+  active: { type: Boolean, required: true },
 });
 
 const RestaurantModel = mongoose.model("Restaurants", RestaurantSchema);
