@@ -6,6 +6,8 @@ module.exports = { chefsRouter };
 
 chefsRouter.get("/", chefsController.requestChefsList);
 
+chefsRouter.get("/:id", chefsController.requestSpecificChef);
+
 chefsRouter.post("/", verifyUser, chefsController.requestAddChef);
 
 chefsRouter.patch("/:id", verifyUser, chefsController.requestUpdateChef);

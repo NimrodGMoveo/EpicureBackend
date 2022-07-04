@@ -12,7 +12,7 @@ ChefOfTheWeekRouter.get("/rest",  ChefOfTheWeekController.requestChefOfTheWeekRe
 ChefOfTheWeekRouter.post("/", ChefOfTheWeekController.requestPostChefOfTheWeek);
 
 ChefOfTheWeekRouter.patch(
-  "/:id", verifyUser,
+  "/", verifyUser,
   ChefOfTheWeekController.requestUpdateChefOfTheWeek
 );
 
